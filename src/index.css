@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body, #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-blackboard-dark text-chalk;
+    background-image:
+      radial-gradient(ellipse at top, rgba(42, 77, 62, 0.4) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .chalk-text {
+    text-shadow:
+      0.5px 0.5px 0 rgba(245, 230, 200, 0.3),
+      -0.5px -0.5px 0 rgba(245, 230, 200, 0.2);
+    letter-spacing: 0.02em;
+  }
+
+  .chalk-border {
+    border: 2px solid rgba(245, 230, 200, 0.4);
+    box-shadow:
+      inset 0 0 20px rgba(0, 0, 0, 0.2),
+      0 0 10px rgba(245, 230, 200, 0.05);
+  }
+
+  .chalk-underline {
+    background-image: linear-gradient(90deg, rgba(245, 230, 200, 0.6) 0%, rgba(245, 230, 200, 0.6) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    background-position: 0 100%;
+  }
+
+  .wood-frame {
+    background: linear-gradient(135deg, #8b6f47 0%, #6b5236 50%, #8b6f47 100%);
+    box-shadow:
+      inset 2px 2px 4px rgba(255, 255, 255, 0.1),
+      inset -2px -2px 4px rgba(0, 0, 0, 0.3),
+      0 8px 32px rgba(0, 0, 0, 0.5);
+  }
+
+  .sticky-note {
+    box-shadow:
+      2px 3px 8px rgba(0, 0, 0, 0.25),
+      inset 0 0 20px rgba(255, 255, 255, 0.1);
+    position: relative;
+  }
+
+  .sticky-note::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 60px;
+    height: 18px;
+    background: rgba(200, 180, 140, 0.55);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+
+  .tape {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    width: 70px;
+    height: 20px;
+    background: rgba(230, 210, 150, 0.6);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  .btn-chalk {
+    @apply relative px-6 py-3 font-chalk text-lg rounded transition-all duration-200;
+    background: rgba(245, 230, 200, 0.08);
+    border: 2px solid rgba(245, 230, 200, 0.5);
+    color: #f5e6c8;
+  }
+  .btn-chalk:hover:not(:disabled) {
+    background: rgba(245, 230, 200, 0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 230, 200, 0.15);
+  }
+  .btn-chalk:active:not(:disabled) {
+    transform: translateY(0);
+  }
+  .btn-chalk:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .btn-chalk-primary {
+    background: rgba(232, 115, 74, 0.25);
+    border-color: rgba(232, 115, 74, 0.7);
+    color: #f5e6c8;
+  }
+  .btn-chalk-primary:hover:not(:disabled) {
+    background: rgba(232, 115, 74, 0.4);
+  }
+
+  .input-chalk {
+    @apply w-full bg-transparent border-0 border-b-2 border-chalk/40 text-chalk placeholder-chalk/40 py-2 px-1 outline-none font-hand text-lg transition-all;
+  }
+  .input-chalk:focus {
+    border-bottom-color: rgba(245, 230, 200, 0.8);
+  }
+
+  .input-chalk-number {
+    @apply w-20 bg-transparent border-2 border-chalk/30 rounded text-chalk text-center py-1 px-2 outline-none font-hand text-lg;
+  }
+  .input-chalk-number:focus {
+    border-color: rgba(245, 230, 200, 0.7);
+  }
+
+  .menu-item-card {
+    @apply p-3 rounded cursor-pointer transition-all duration-200 border-2 border-transparent;
+    background: rgba(245, 230, 200, 0.05);
+  }
+  .menu-item-card:hover {
+    background: rgba(245, 230, 200, 0.1);
+  }
+  .menu-item-card.selected {
+    border-color: rgba(232, 115, 74, 0.7);
+    background: rgba(232, 115, 74, 0.15);
+  }
+}
+
+@layer utilities {
+  .scrollbar-chalk::-webkit-scrollbar {
+    width: 8px;
+  }
+  .scrollbar-chalk::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  .scrollbar-chalk::-webkit-scrollbar-thumb {
+    background: rgba(245, 230, 200, 0.3);
+    border-radius: 4px;
+  }
+  .scrollbar-chalk::-webkit-scrollbar-thumb:hover {
+    background: rgba(245, 230, 200, 0.5);
+  }
+}
